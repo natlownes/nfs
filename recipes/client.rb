@@ -27,6 +27,13 @@ else
 
   if node[:nfs] && node[:nfs][:mounts]
     node[:nfs][:mounts].each do |target, config|
+      
+      directory target do
+        mode "0755"
+        action :create
+        recursive true
+      end
+
       r = mount(target) do
         fstype      "nfs"
         options     %w(rw,soft,intr,nfsvers=3)
