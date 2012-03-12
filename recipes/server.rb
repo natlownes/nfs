@@ -17,12 +17,7 @@ package "nfs-kernel-server"
 
 if node[:nfs][:exports] && (not node[:nfs][:exports].empty?)
 
-  Chef::Log.info node[:nfs][:exports].to_hash.inspect
-
-  # FIXME: nfs_client should look for things by mount. Everything is announced just as ':server' in each realm
-  node[:nfs][:exports].each do |exp_name, exp_info|
-    announce(:nfs, :server,  :realm => node[:nfs][:exports].values.first[:realm])
-  end
+  Chef::Log.info node[:nfs][:exports].inspect
 
   service "nfs-kernel-server" do
     action [ :enable, :start ]

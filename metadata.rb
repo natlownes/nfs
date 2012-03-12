@@ -6,8 +6,6 @@ version          "3.0.4"
 
 description      "NFS: network shared filesystem"
 
-depends          "metachef"
-
 recipe           "nfs::client",                        "NFS client: uses metachef to discover its server, and mounts the corresponding NFS directory"
 recipe           "nfs::default",                       "Base configuration for nfs"
 recipe           "nfs::server",                        "NFS server: exports directories via NFS; announces using metachef."
