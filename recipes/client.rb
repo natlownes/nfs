@@ -30,9 +30,10 @@ else
       
       directory target do
         mode "0755"
-        action :create
         recursive true
-      end
+
+        action :nothing
+      end.run_action(:create)
 
       r = mount(target) do
         fstype      "nfs"
